@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean id="dao" class="com.dao.DeptDAO"></bean>
+	
+<!-- 	<bean id="deptService" class="com.service.DeptService"> -->  <!-- 주석부분 ( 10, 12 줄 ) 을 주석으로 막고 autowire=byType으로도 가능 -->
+	<!-- <bean id="deptService" class="com.service.DeptService" autowire="byType"> -->
+	<bean id="deptService" class="com.service.DeptService" autowire="byName">
+		<!-- <property name="dao" ref="deptDAO"></property> -->
+	</bean>
+	
+
+
+</beans>

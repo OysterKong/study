@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+<!-- 주의 annotation사용시 context:annotation-config필요함 -->
+
+<!-- <bean id="pet01" class="com.spring.Cat">
+	<constructor-arg name="catAge" value="10"></constructor-arg>
+	<constructor-arg name="catName" value="야옹이"></constructor-arg>
+</bean> -->
+<bean id="xx" class="com.spring.Dog">
+	<constructor-arg name="dogname" value="멍멍이"></constructor-arg>
+</bean>
+
+<!-- 필수 사항이 아니게 하기 위해 @Autowired(required=false) -->
+<!--  <bean id="pet02" class="com.spring.Cat">
+	<constructor-arg name="catAge" value="10"></constructor-arg>
+	<constructor-arg name="catName" value="야옹이"></constructor-arg>
+</bean> -->
+
+<context:annotation-config></context:annotation-config>
+<bean id="onePerson" class="com.spring.Person">
+<!-- xml에 autowire삭제되고 클래스 멤버변수 @autowired로 자동 주입 선언함   -->
+	<property name="username" value="홍길동"></property>
+	<property name="age" value="10"></property>
+	<!-- <property name="cat" ref="pet01"></property>  -->
+ </bean>
+
+
+
+
+
+
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	
+	<!-- default 삭제 -->
+<bean id="x" class="com.spring.Cat">
+	<constructor-arg name="catName" value="야옹이"></constructor-arg>
+	<constructor-arg name="catAge" value="10"></constructor-arg>
+</bean>
+<!-- <bean id="y" class="com.spring.Cat">
+	<constructor-arg name="catName" value="나비"></constructor-arg>  byType 사용시 Cat이 두개이므로 충돌됨
+	<constructor-arg name="catAge" value="20"></constructor-arg>
+</bean> -->
+
+
+<!-- default-autowire="byType" 선언으로 자동주입됨 -->
+<bean id="onePerson" class="com.spring.Person" autowire="byType"> <!-- byName을 쓸때는 bean id를 일치시켜야함 ( 이름)-->
+	<property name="username" value="홍길동"></property>
+	
+	
+		<!-- <value>홍길동</value> 주의  
+	</property>
+	<property name="age" value="30"></property>
+	<property name="cat" ref="catBean"></property>
+	<property name="dog" ref="dogBean"></property>
+	<property name="dog">
+		<ref bean="dogBean"/>
+	</property> -->
+	
+</bean>
+</beans>

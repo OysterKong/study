@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+<!-- namespace설정, 주의 annotation 사용시 context:annotation-config 반드시 추가 -->	
+<context:annotation-config></context:annotation-config>
+	
+<bean id="pet01" class="com.spring.Cat">
+	<constructor-arg name="catName" value="야옹이"></constructor-arg>
+	<constructor-arg name="catAge" value="20"></constructor-arg>
+</bean>
+
+<!-- Person.java 에 set 함수 @Required 설정 -->
+<bean id="onePerson" class="com.spring.Person" autowire="byType">
+	<property name="username" value="홍길동"></property>
+	<property name="age" value="10"></property>
+	<!-- 반드시 설정 안할시 에러,  @Required를 set함수에 설정해놓으면 20번째 ref 단을 반드시 적어줘야한다. 안적으면 error로 뜸. -->
+	<!-- <property name="cat" ref="pet01"></property> -->
+
+
+</bean>
+	
+
+
+</beans>

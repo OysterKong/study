@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.3.xsd">
+
+	<bean id="anotherBean" class="com.spring.AnotherBean"></bean>
+	<util:list id="valueList">
+		<value>10</value>
+		<value>20</value>
+		<value>30</value>
+	</util:list>
+	
+	
+	<bean id="echoBean" class="com.spring.EchoBean" autowire="byName"> <!-- byName 이므로 EchoBean.java 의 변수이름  valueList 과 같아야함-->
+	<!-- <bean id="echoBean" class="com.spring.EchoBean" autowire="byType"> --> <!-- byType도 가능-->
+		<!-- anotherBean 으로 자동주입 -->
+<!--  		<property name="valueList">
+			<list>
+				<value>10</value>
+				<value>20</value>
+				<value>30</value>
+			</list>
+		</property> -->
+	</bean>
+	
+
+
+</beans>
