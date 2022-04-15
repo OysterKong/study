@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
-<!-- context chek -->
+<!-- context check -->
 <!-- 0.context Annotation -->
 <context:annotation-config></context:annotation-config>
 <!-- 1. properties읽기 -->

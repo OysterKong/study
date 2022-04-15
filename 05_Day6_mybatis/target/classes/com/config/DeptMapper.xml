@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="DeptMapper">
+ 
+ 	<select id="selectAll" resultType="DeptDTO">
+ 	  select deptno, dname, loc
+ 	  from dept
+ 	  order by deptno desc
+ 	</select>
+ 	
+ 	<insert id="insert" parameterType="DeptDTO">
+ 		insert into dept(deptno, dname, loc)
+ 		values (#{deptno}, #{dname}, #{loc})
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="DeptDTO">  <!-- parameter type이 원래는 com.dto.DeptDTO 지만 @Alias 설정해놓은거로 적음 -->
+ 		update dept
+ 		set dname = #{dname}, loc = #{loc}
+ 		where deptno = #{deptno}
+ 	</update>
+ 	
+ 	<delete id="delete" parameterType="int">
+ 		 delete from dept
+ 		 where deptno = #{deptno}
+ 	</delete>
+
+	
+	
+	
+</mapper>
