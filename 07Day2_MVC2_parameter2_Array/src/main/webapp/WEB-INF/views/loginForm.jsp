@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="login3" method="Post">
+<form action="login2" method="Post">
 	post방식
 	아이디:<input type="text" name="userid"><br>
 	비밀번호:<input type="text" name="passwd"><br>

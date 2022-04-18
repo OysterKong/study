@@ -37,7 +37,7 @@ public class TestController {
 	public ModelAndView login2 (LoginDTO dto) {  //dto의 키 값을 xxx로 설정
 		System.out.println("login2.mav ======================" + dto);
 		ModelAndView mav = new ModelAndView();
-		mav.addObject("lodin", dto);
+		mav.addObject("login", dto);
 		mav.setViewName("login2");
 		return mav;
 	}
