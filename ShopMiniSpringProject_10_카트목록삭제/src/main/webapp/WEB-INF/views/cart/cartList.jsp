@@ -5,8 +5,62 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+
+$(function() {
+	//삭제버튼 이벤트처리
+	$(".deleteBtn").on("click", function () {
+		console.log("deleteBtn 클릭 ");
+		var num= $(this).attr("data-num");
+		var xxx= $(this);	
+		console.log(num);
+		console.log(this);
+		$.ajax({
+			url: "loginCheck/cartDelete",
+			type:"get",
+			dataType: "text",
+			data: {
+				num: num
+			},
+			success: function(data, status, xhr) {
+				console.log("success");
+				//dom삭제 
+				xxx.parents().filter("tr").remove();
+			},
+			error: function(xhr, status, error) {
+				console.log(error);
+			}			
+		});//end ajax
+	});//end event
+	//수정버튼이벤트 처리 
+	$(".updateBtn").on("click", function() {
+		//console.log("updateBtn Click 실행됨");
+		var num=$(this).attr("data-num");
+		var gAmount= $("#cartAmount"+num).val();
+		var gPrice =  $(this).attr("data-price");
+		console.log(num, gPrice);
+		$.ajax({
+			url: "loginCheck/cartUpdate",
+			type: "get",
+			dataType: "text",
+			data: {
+				num: num,
+				gAmount: gAmount
+			},
+			success: function (data, status, xhr) {
+				var total= 
+						parseInt(gAmount)*parseInt(gPrice);
+				$("#sum"+num).text(total);				
+			},
+			error: function (xhr, status,error) {
+				console.log(error);
+			}//end error			
+		});//end ajax
+	}); //end click
+});//end ready
+
+
 /* 자바스크립트 프론트 처리 => 이후 jquery로 변경할 것임.  */
-   var httpRequest;
+ /*   var httpRequest;
    var myNum;
 	function amountUpdate(num){
 	myNum=num;
@@ -35,9 +89,9 @@ console.log(document.getElementById("ggPrice"+myNum));
 	 document.getElementById("sum"+myNum).innerText= sum;
 			 
 		}//end if
-	}//end responseFun
+	}//end responseFun */
 
-	function delCart(num){
+/* 	function delCart(num){
 		location.href="CartDelServlet?num="+num;
 	}
 	
@@ -47,11 +101,12 @@ console.log(document.getElementById("ggPrice"+myNum));
 	  console.log(z);
 	  for (var i = 0; i < z.length; i++) {
 		z[i].checked= xxx.checked;
-	}
+	} */
 	  /* for(var x of, z){
 		  x.checked=xxx.checked;
 	  } */
-	}//
+/* 	}
+}
 	
 	function delAllCart(f){
 		f.action="CartDelAllServlet";
@@ -63,7 +118,7 @@ console.log(document.getElementById("ggPrice"+myNum));
 	function orderAllConfirm(f){
 		f.action="CartOrderAllConfirmServlet";
 		f.submit();
-	}
+	} */
 </script>
 
 <table width="90%" cellspacing="0" cellpadding="0" border="0">
@@ -152,20 +207,22 @@ console.log(document.getElementById("ggPrice"+myNum));
 			</td>
 			<td class="td_default" align="center" width="90"><input
 				class="input_default" type="text" name="cartAmount"
-				id="" style="text-align: right" maxlength="3"
+				id="cartAmount${x.num}" style="text-align: right" maxlength="3"
 				size="2" value="${x.gAmount }"></input></td>
 			<td><input type="button" value="수정"
-				onclick="amountUpdate(${x.num})" /></td>
+				class="updateBtn"
+				data-num="${x.num}"
+				data-price="${x.gPrice}"/></td>
 			<td class="td_default" align="center" width="80"
-				style='padding-left: 5px'><span id="sum${x.num }">
-				${x.gPrice * x.gAmount }
+				style='padding-left: 5px'><span id="sum${x.num}">
+				${x.gPrice * x.gAmount}
 				</span></td>
 			<td><input type="button" value="주문"
 				onclick="order(${x.num})"></td>
 			<td class="td_default" align="center" width="30"
 				style='padding-left: 10px'>
-				<input type="button" value="삭제"
-				onclick="delCart(${x.num})"></td>
+				<input type="button" value="삭제" class="deleteBtn"
+				data-num="${x.num}"></td>
 			<td height="10"></td>
 		</tr>
 
