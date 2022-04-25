@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.dto.CartDTO;
 import com.dto.GoodsDTO;
+import com.dto.OrderDTO;
 
 @Repository
 public class GoodsDAO {
@@ -56,6 +57,11 @@ public class GoodsDAO {
 	public CartDTO orderConfirmByNum(int num) {
 		CartDTO dto = template.selectOne("CartMapper.cartByNum", num);
 		return dto;
+	}
+
+	public void orderDone(OrderDTO oDTO) {
+		int n = template.insert("CartMapper.orderDone", oDTO);
+		
 	}
 
 }

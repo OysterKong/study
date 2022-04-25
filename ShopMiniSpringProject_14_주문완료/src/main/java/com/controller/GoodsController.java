@@ -33,12 +33,15 @@ public class GoodsController {
 	
 	
 	@RequestMapping(value="/loginCheck/orderDone")
-	public void orderDone(OrderDTO oDTO, int orderNum, HttpSession session ) {
+	public String orderDone(OrderDTO oDTO, int orderNum, HttpSession session, RedirectAttributes xxx ) {
 		System.out.println("주문한상품정보 : " + oDTO + "\t" + "주문번호 : "+ orderNum); //주문한 상품정보에는 주문번호, 아이디, 주문날짜가 빠져있음
 		MemberDTO dto = (MemberDTO) session.getAttribute("login"); //세션에서 아이디 꺼내오기
 		oDTO.setUserid(dto.getUserid());
 		oDTO.setNum(orderNum);
-	}
+		service.orderDone(oDTO, orderNum); //insert, delete
+		xxx.addFlashAttribute("oDTO", oDTO);
+		return "redirect:../orderDone";
+	}	
 	
 	
 	@RequestMapping(value="/loginCheck/orderConfirm")
