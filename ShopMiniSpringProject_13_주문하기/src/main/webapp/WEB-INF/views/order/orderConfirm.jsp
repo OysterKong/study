@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 
 /* jquery문으로 바꾸기  */
@@ -10,7 +10,7 @@
 		$("#same").on("click",function(){
 			if(this.checked){
 				$("#orderName").val($("#mname").val());
-				$("#sample4_postcode").val($("#mpost").val());
+				$("#sample4_postcode").val($("#mpost1").val());
 				$("#sample4_roadAddress").val($("#maddress1").val());
 				$("#sample4_jibunAddress").val($("#maddress2").val());
 				$("#phone").val($("#mphone").val());
