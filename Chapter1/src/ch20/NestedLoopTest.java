@@ -25,8 +25,9 @@ public class NestedLoopTest {
 				count++;
 			}
 			dan++;
+			System.out.println();
 		}
-
+		
 	}
 	
 }//main end
