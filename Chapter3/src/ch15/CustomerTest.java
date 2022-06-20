@@ -10,13 +10,13 @@ public class CustomerTest {
 		customer.order();
 		customer.hello();
 		
-		Buy buyer = customer;
-		buyer.buy();
-		buyer.order();
-		
-		Sell seller = customer;
-		seller.sell();
-		seller.order();
+//		Buy buyer = customer;
+//		buyer.buy();
+//		buyer.order();
+//		
+//		Sell seller = customer;
+//		seller.sell();
+//		seller.order();
 
 	}
 
